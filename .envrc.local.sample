@@ -1,0 +1,8 @@
+
+cal サンプル
+# ローカル開発用環境変数を設定する
+
+export DATABASE_HOST=localhost
+export DATABASE_PORT=3306
+export DATABASE_USERNAME=user
+export DATABASE_PASSWORD=pass
