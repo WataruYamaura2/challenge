@@ -11,6 +11,7 @@ source 'https://rubygems.org' do
   gem 'slim-rails'
   gem 'uglifier'
   gem 'virtus'
+  gem 'turbolinks'
 
   group :doc do
     gem 'yard'
