@@ -16,15 +16,6 @@ class BlogsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def show
-  end
-
-  def delete
-  end
-
   def blog_params
     params.require(:blog).permit(:title, :body)
   end
