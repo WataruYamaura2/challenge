@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Blog, type: :model do
+RSpec.describe Blog do
   let(:blog) { create(:blog) }
   describe 'title' do
     context 'when it is empty' do
