@@ -17,6 +17,8 @@ source 'https://rubygems.org' do
     gem 'yard'
   end
 
+  gem 'web-console', group: :development
+
   group :development, :test do
     gem 'better_errors'
     gem 'bullet'
@@ -30,7 +32,6 @@ source 'https://rubygems.org' do
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rubocop', require: false
-    gem 'web-console', '~> 2.0'
   end
 
   group :test do

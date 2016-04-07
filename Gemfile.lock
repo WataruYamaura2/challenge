@@ -298,7 +298,7 @@ DEPENDENCIES
   uglifier!
   unicorn (~> 4.9.0)!
   virtus!
-  web-console (~> 2.0)!
+  web-console!
   yard!
 
 BUNDLED WITH
