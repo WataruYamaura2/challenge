@@ -1,49 +1,36 @@
 require 'rails_helper'
-
+require 'pry-rails'
 RSpec.describe ArticlesController do
+  shared_examples_for '2tests' do |template|
+    it { expect(response.status).to eq(200) }
+    it { expect(response).to render_template template }
+  end
   describe 'POST #create' do
-    context 'saves' do
-      it 'the new article' do
-        expect do
-          post :create, article: FG.attributes_for(:article)
-        end.to change(Article, :count).by(1)
-      end
-      it 'redirect to :index' do
-        post :create, article: attributes_for(:article)
-        expect(response).to redirect_to articles_path(assigns([:articles]))
-      end
+    context 'when was able to saves' do
+      before { post :create, article: attributes_for(:article) }
+      it { change(Article, :count).by(1) }
+      it { expect(response).to redirect_to articles_path(assigns([:articles])) }
     end
-    context 'not saves' do
-      it 'redirect to :new' do
-        post :create, article: attributes_for(:article, title: nil)
-        expect(response).to render_template :new
-      end
+    context 'when was able to not saves' do
+      before { post :create, article: attributes_for(:article, title: nil) }
+      it_behaves_like '2tests', :new
     end
   end
   describe 'GET #index' do
-    it 'render template index' do
-      get :index
-      expect(response).to render_template :index
-    end
+    before { get :index }
+    it_behaves_like '2tests', :index
   end
   describe 'GET #new' do
-    it 'render template new' do
-      get :new
-      expect(response).to render_template :new
-    end
+    before { get :new }
+    it_behaves_like '2tests', :new
   end
 
   describe 'GET #show' do
-    it 'the requested article to @article' do
-      article = create(:article)
-      get :show, id: article
-      expect(assigns(:article)).to eq article
+    before do
+      @article = create(:article)
+      get :show, id: @article
     end
-
-    it 'render template show' do
-      article = create(:article)
-      get :show, id: article
-      expect(response).to render_template :show
-    end
+    it { expect(assigns(:article)).to eq @article }
+    it_behaves_like '2tests', :show
   end
 end
