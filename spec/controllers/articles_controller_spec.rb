@@ -14,10 +14,36 @@ RSpec.describe ArticlesController do
       end
     end
     context 'not saves' do
-      it "redirect to :new" do
+      it 'redirect to :new' do
         post :create, article: attributes_for(:article, title: nil)
         expect(response).to render_template :new
       end
+    end
+  end
+  describe 'GET #index' do
+    it 'render template index' do
+      get :index
+      expect(response).to render_template :index
+    end
+  end
+  describe 'GET #new' do
+    it 'render template new' do
+      get :new
+      expect(response).to render_template :new
+    end
+  end
+
+  describe 'GET #show' do
+    it 'the requested article to @article' do
+      article = create(:article)
+      get :show, id: article
+      expect(assigns(:article)).to eq article
+    end
+
+    it 'render template show' do
+      article = create(:article)
+      get :show, id: article
+      expect(response).to render_template :show
     end
   end
 end
