@@ -1,7 +1,7 @@
 require 'rails_helper'
-require 'pry-rails'
+
 RSpec.describe ArticlesController do
-  shared_examples_for '2tests' do |template|
+  shared_examples_for 'http_succses' do |template|
     it { expect(response.status).to eq(200) }
     it { expect(response).to render_template template }
   end
@@ -13,16 +13,16 @@ RSpec.describe ArticlesController do
     end
     context 'when was able to not saves' do
       before { post :create, article: attributes_for(:article, title: nil) }
-      it_behaves_like '2tests', :new
+      it_behaves_like 'http_succses', :new
     end
   end
   describe 'GET #index' do
     before { get :index }
-    it_behaves_like '2tests', :index
+    it_behaves_like 'http_succses', :index
   end
   describe 'GET #new' do
     before { get :new }
-    it_behaves_like '2tests', :new
+    it_behaves_like 'http_succses', :new
   end
 
   describe 'GET #show' do
@@ -31,6 +31,6 @@ RSpec.describe ArticlesController do
       get :show, id: @article
     end
     it { expect(assigns(:article)).to eq @article }
-    it_behaves_like '2tests', :show
+    it_behaves_like 'http_succses', :show
   end
 end
