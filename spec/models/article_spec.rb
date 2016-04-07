@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Article do
-  let(:article) { create(:article) }
+  let(:article) { build(:article) }
   describe 'title' do
     context 'when it is empty' do
       before { article.title = nil }
