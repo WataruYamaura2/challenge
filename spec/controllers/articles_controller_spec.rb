@@ -6,12 +6,12 @@ RSpec.describe ArticlesController do
     it { expect(response).to render_template template }
   end
   describe 'POST #create' do
-    context 'when was able to saves' do
+    context 'when saving article is succeeded' do
       before { post :create, article: attributes_for(:article) }
       it { change(Article, :count).by(1) }
       it { expect(response).to redirect_to articles_path(assigns([:articles])) }
     end
-    context 'when was able to not saves' do
+    context 'when saving article is not succeeded' do
       before { post :create, article: attributes_for(:article, title: nil) }
       it_behaves_like 'http_succses', :new
     end
