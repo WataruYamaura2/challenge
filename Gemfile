@@ -1,4 +1,4 @@
-ruby '2.2.0'
+ruby '2.2.3'
 
 source 'https://rubygems.org' do
   gem 'coffee-rails'
@@ -30,7 +30,10 @@ source 'https://rubygems.org' do
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'rubocop', require: false
-    gem 'web-console', '~> 2.0'
+  end
+
+  group :development do
+    gem 'web-console'
   end
 
   group :test do

@@ -1,26 +1,26 @@
 require 'rails_helper'
 
-RSpec.describe Blog do
-  let(:blog) { create(:blog) }
+RSpec.describe Article do
+  let(:article) { build(:article) }
   describe 'title' do
     context 'when it is empty' do
-      before { blog.title = nil }
+      before { article.title = nil }
       it { is_expected.not_to be_valid }
     end
 
     context 'when it is over' do
-      before { blog.title = 'a' * 1001 }
+      before { article.title = 'a' * 1001 }
       it { is_expected.not_to be_valid }
     end
   end
   describe 'body' do
     context 'when it is empty' do
-      before { blog.body = nil }
+      before { article.body = nil }
       it { is_expected.not_to be_valid }
     end
 
     context 'when it is over' do
-      before { blog.body = 'a' * 51 }
+      before { article.body = 'a' * 51 }
       it { is_expected.not_to be_valid }
     end
   end

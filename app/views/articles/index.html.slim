@@ -1,0 +1,16 @@
+h1 Listing blogs
+
+table
+  thead
+    tr
+      th Title
+      th Text
+
+  tbody
+    - @articles.each do |article|
+      tr
+        td = link_to article.title, article
+
+br
+
+= link_to '記事を投稿する', new_article_path
