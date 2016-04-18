@@ -5,7 +5,6 @@ AllCops:
     - vendor/**/*
     - db/**/*
     - bin/**
-  RunRailsCops: true
   DisplayCopNames: true
 
 Lint/AssignmentInCondition:
@@ -51,8 +50,11 @@ Style/RedundantSelf:
 Style/SignalException:
   Enabled: false
 
-Style/SingleSpaceBeforeFirstArg:
+Style/SpaceBeforeFirstArg:
   Enabled: false
 
-Style/TrailingComma:
-  EnforcedStyleForMultiline: comma
+Style/TrailingCommaInArguments:
+    EnforcedStyleForMultiline: no_comma
+
+Style/TrailingCommaInLiteral:
+    EnforcedStyleForMultiline: comma
